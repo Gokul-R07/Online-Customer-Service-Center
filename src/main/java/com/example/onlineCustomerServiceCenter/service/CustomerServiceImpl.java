@@ -14,4 +14,7 @@ public class CustomerServiceImpl implements CustomerService{
     public Customer registerCustomer(Customer newCustomer) {
         return this.customerRepository.save(newCustomer);
     }
+    public Customer updateCustomer(Customer customer){
+
+    }
 }

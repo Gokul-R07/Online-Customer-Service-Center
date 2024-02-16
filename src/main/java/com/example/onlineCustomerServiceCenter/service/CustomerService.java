@@ -4,4 +4,5 @@ import com.example.onlineCustomerServiceCenter.entity.Customer;
 
 public interface CustomerService {
     Customer registerCustomer(Customer newCustomer);
+    Customer updateCustomer(Customer customer);
 }
