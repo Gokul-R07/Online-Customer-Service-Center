@@ -3,10 +3,9 @@ package com.example.onlineCustomerServiceCenter.controller;
 import com.example.onlineCustomerServiceCenter.entity.Customer;
 import com.example.onlineCustomerServiceCenter.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class CustomerController {
@@ -22,6 +21,21 @@ public class CustomerController {
     public Customer updateCustomer(@RequestBody Customer customer){
         return this.customerService.updateCustomer(customer);
     }
-
+    @GetMapping("customers")
+    public List<Customer> getAllCustomers() {
+        return this.customerService.getAllCustomers();
+    }
+    @GetMapping("customer/{id}")
+    public Customer getCustomerById(@PathVariable Integer id){
+        return this.customerService.getCustomerById(id);
+    }
+    //GetMapping("Customer/name/{name}")
+  //  public Customer getCustomerByName(@PathVariable String name){
+    //    return this.customerService.getCustomerByName(name);
+    //}
+    @DeleteMapping("customer/{id}")
+    public Customer deleteCustomerById(@PathVariable Integer id) {
+         return this.customerService.deleteCustomerById(id);
+    }
 
 }

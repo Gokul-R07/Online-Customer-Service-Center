@@ -4,6 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +17,20 @@ public class Customer {
     @Id
     @GeneratedValue()
     private Integer customerId;
+    @NotNull(message = "customer name shouldn't be null")
+    @Pattern(regexp="[A-Za-z\\s]+$")
     private String name;
+
+    @NotNull(message="customer email shouldn't be null")
+    @Email
     private String email;
+    @NotNull(message="customer password shouldn't be null")
+    @Pattern(regexp="[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
+    @NotNull(message="customer city shouldn't be null")
     private String city;
+    @NotNull(message="customer phoneNumber shouldn't be null")
+    @Pattern(regexp="^\\d{10}$")
     private String phoneNumber;
     @OneToMany
     private List<Issue> issues=new ArrayList<>();
